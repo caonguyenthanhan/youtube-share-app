@@ -34,6 +34,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        
+        // Đọc danh sách máy tính từ file JSON
+        computerList = loadComputerList().toMutableList()
 
         // Xử lý share từ ứng dụng khác
         handleIntent(intent)
@@ -53,8 +56,7 @@ class HomeActivity : AppCompatActivity() {
             } else false
         }
 
-        // Đọc danh sách máy tính từ file JSON
-        computerList = loadComputerList().toMutableList()
+        // computerList đã được khởi tạo ở đầu onCreate
 
         // Setup RecyclerView
         val recyclerView = findViewById<RecyclerView>(R.id.computerGridView)
@@ -146,7 +148,7 @@ class HomeActivity : AppCompatActivity() {
                     for (computer in selectedComputers) {
                         sendLinkToComputer(computer, sharedText)
                     }
-                    Toast.makeText(this, "Đã gửi đến ${selectedComputers.size} máy", Toast.LENGTH_SHORT).show()
+                    // Thông báo đã chuyển sang ChatActivity để hiển thị kết quả gửi chi tiết
                 }
             }
             .setNegativeButton("Hủy", null)
@@ -154,13 +156,19 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun sendLinkToComputer(computer: Computer, sharedText: String? = null) {
-        val intent = Intent(this, ChatActivity::class.java)
-        intent.putExtra("computer_name", computer.name)
-        intent.putExtra("target_computer_id", computer.targetComputerId)
-        if (sharedText != null) {
-            intent.putExtra("shared_text", sharedText)
+        try {
+            val intent = Intent(this, ChatActivity::class.java)
+            intent.putExtra("computer_name", computer.name)
+            intent.putExtra("target_computer_id", computer.targetComputerId)
+            if (sharedText != null) {
+                intent.putExtra("shared_text", sharedText)
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            // Xử lý lỗi khi chuyển màn hình
+            Toast.makeText(this, "Lỗi khi mở màn hình chat: ${e.message}", Toast.LENGTH_SHORT).show()
+            e.printStackTrace()
         }
-        startActivity(intent)
     }
 
     private fun confirmDelete(computer: Computer, position: Int) {
@@ -252,4 +260,4 @@ class ComputerAdapter(
         val button: Button = view.findViewById(R.id.computerButton)
         val deleteButton: ImageButton = view.findViewById(R.id.deleteButton)
     }
-} 
+}

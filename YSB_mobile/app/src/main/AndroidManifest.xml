@@ -38,6 +38,11 @@
             android:name=".SettingsActivity"
             android:exported="false"
             android:theme="@style/Theme.YouTubeShareBridge" />
+            
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false"
+            android:theme="@style/Theme.YouTubeShareBridge" />
 
         <!-- Share Receiver Activity - xử lý intent chia sẻ -->
         <activity

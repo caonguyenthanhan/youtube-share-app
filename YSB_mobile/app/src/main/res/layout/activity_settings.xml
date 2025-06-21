@@ -50,6 +50,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/serverAddressLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Địa chỉ Server (bao gồm cổng)">
@@ -59,14 +60,38 @@
                     android:layout_height="wrap_content"
                     android:inputType="textUri"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/bubbleSwitch"
+            
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bật Bong bóng chat nổi"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"/>
+                android:text="Lưu ý: Nhập địa chỉ server theo một trong các định dạng sau:\n- http://34.61.180.50\n- http://34.61.180.50:8080\n- 34.61.180.50 (sẽ tự động thêm http:// và cổng mặc định)\n\nỨng dụng sẽ tự động thêm đường dẫn /api/share vào cuối địa chỉ khi gửi yêu cầu. Nếu máy chủ của bạn có cấu hình khác, vui lòng nhập đầy đủ đường dẫn API, ví dụ: http://34.61.180.50:8080/api/share"
+                android:textSize="12sp"
+                android:textColor="#757575"
+                android:paddingTop="4dp"
+                android:paddingBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:id="@+id/bubbleLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bật Bong bóng chat nổi"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"/>
+                    
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/bubbleSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"/>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/saveButton"
@@ -79,4 +104,4 @@
                 android:textAllCaps="true"/>
         </LinearLayout>
     </ScrollView>
-</LinearLayout> 
+</LinearLayout>
