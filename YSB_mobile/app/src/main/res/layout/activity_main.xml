@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Nút cài đặt nhỏ góc trên bên phải -->
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/ic_menu_preferences"
+        android:background="@android:color/transparent"
+        android:contentDescription="Cài đặt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp" />
+
+    <!-- Shared Link TextView -->
+    <TextView
+        android:id="@+id/sharedLinkTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/settingsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Device Name Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/deviceNameLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Tên thiết bị"
+        app:layout_constraintTop_toBottomOf="@id/sharedLinkTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/deviceNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Security Code Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/securityCodeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Mã bảo mật"
+        app:layout_constraintTop_toBottomOf="@id/deviceNameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/securityCodeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Target Computer ID Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/targetComputerIdLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Mã máy tính đích"
+        app:layout_constraintTop_toBottomOf="@id/securityCodeLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/targetComputerIdEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Server Choice Radio Group -->
+    <RadioGroup
+        android:id="@+id/serverChoiceGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/targetComputerIdLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <RadioButton
+            android:id="@+id/localServerRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gửi đến máy tính" />
+
+        <RadioButton
+            android:id="@+id/remoteServerRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gửi đến server" />
+
+    </RadioGroup>
+
+    <!-- Server IP Input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/serverIpLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Địa chỉ IP máy tính"
+        app:layout_constraintTop_toBottomOf="@id/serverChoiceGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/serverIpEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lưu cài đặt"
+        app:layout_constraintTop_toBottomOf="@id/serverIpLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Khung chat log -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/logRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/saveButton"
+        app:layout_constraintBottom_toTopOf="@id/manualLinkLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:overScrollMode="never"
+        android:padding="8dp" />
+
+    <!-- Ô nhập link -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/manualLinkLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nhập hoặc dán liên kết"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/sendManualLinkButton"
+        app:layout_constraintTop_toBottomOf="@id/logRecyclerView"
+        android:layout_marginEnd="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/manualLinkEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Nút gửi -->
+    <Button
+        android:id="@+id/sendManualLinkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logRecyclerView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout> 

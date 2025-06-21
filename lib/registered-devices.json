@@ -1,0 +1,16 @@
+{
+  "devices": [
+    {
+      "name": "Samsung Galaxy S21",
+      "security_code": "2003_09_29"
+    },
+    {
+      "name": "Google Pixel 6",
+      "security_code": "2003_09_30"
+    },
+    {
+      "name": "MSi Redmi 9T",
+      "security_code": "2003_09_29"
+    }
+  ]
+} 

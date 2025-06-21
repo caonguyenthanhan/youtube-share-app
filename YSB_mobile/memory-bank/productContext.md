@@ -1,0 +1,3 @@
+# Product Context
+
+YouTubeShareBridge giúp người dùng chia sẻ link YouTube giữa các thiết bị mà không cần thao tác phức tạp hoặc đăng nhập nhiều tài khoản. Ứng dụng giải quyết vấn đề chia sẻ thủ công, giảm rủi ro lộ thông tin cá nhân, và tăng tốc độ truyền tải. Người dùng chỉ cần nhập thông tin thiết bị, mã bảo mật và địa chỉ server để sử dụng. Trải nghiệm hướng tới sự đơn giản, an toàn và tiện lợi. 

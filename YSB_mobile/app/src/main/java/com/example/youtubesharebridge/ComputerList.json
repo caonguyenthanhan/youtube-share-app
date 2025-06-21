@@ -1,0 +1,6 @@
+[
+  {"name": "Máy A: ATTR", "target_computer_id": "ATTR"},
+  {"name": "Máy B: MSI", "target_computer_id": "MSI"},
+  {"name": "Máy C: MSI-2", "target_computer_id": "MSI-2"},
+  {"name": "Máy D: MSI-2", "target_computer_id": "MSI-2"}
+] 
